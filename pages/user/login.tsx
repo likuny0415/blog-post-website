@@ -7,7 +7,7 @@ const Login = () => (
       <title>Login</title>
       <meta
         name="description"
-        content="Please login. (You can post articles, comments, and like, follow etc.)"
+        content="Please login."
       />
     </Head>
     <LoginForm />

@@ -16,10 +16,16 @@ import ListErrors from "../common/ListErrors";
 
 const theme = createTheme();
 
-const LoginForm = () => {
+const Register = () => {
+  const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState([]);
+
+  const handleUsernameChange = React.useCallback(
+    (e) => setUsername(e.target.value),
+    []
+  );
 
   const handleEmailChange = React.useCallback(
     (e) => setEmail(e.target.value),
@@ -35,7 +41,6 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      
       const { data } = await UserAPI.login(email, password);
 
       if (data?.error) {
@@ -65,7 +70,7 @@ const LoginForm = () => {
           }}
         >
           <Typography component="h1" variant="h5">
-            Sign in
+            Register
           </Typography>
           <ListErrors errors={errors} />
           <Box
@@ -74,6 +79,18 @@ const LoginForm = () => {
             noValidate
             sx={{ mt: 1 }}
           >
+              <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={username}
+              onChange={handleUsernameChange}
+            />
             <TextField
               margin="normal"
               required
@@ -111,14 +128,9 @@ const LoginForm = () => {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="login" variant="body2">
+                  {"Already has an account? Sign In!"}
                 </Link>
               </Grid>
             </Grid>
@@ -129,4 +141,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Register;
