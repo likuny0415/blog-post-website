@@ -41,8 +41,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const { data } = await UserAPI.login(email, password);
-
+      const { data } = await UserAPI.register(email, username, password);
+      
       if (data?.error) {
         setErrors(data.error);
       }
