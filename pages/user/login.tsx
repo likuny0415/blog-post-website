@@ -1,5 +1,6 @@
 import LoginForm from "../../components/profile/LoginForm";
 import Head from "next/head";
+import NavBar from "../../components/common/Navbar";
 
 const Login = () => (
   <>
@@ -10,6 +11,7 @@ const Login = () => (
         content="Please login."
       />
     </Head>
+    
     <LoginForm />
   </>
 );
