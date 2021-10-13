@@ -22,13 +22,12 @@ const MyApp = ({ Component, pageProps }) => (
       />
     </Head>
     
-    <CacheProvider value={cache}>
+    
       <ContextProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </ContextProvider>
-    </CacheProvider>
       
   </>
 );
