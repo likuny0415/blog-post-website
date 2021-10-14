@@ -11,7 +11,6 @@ const Login = () => (
         content="Please login."
       />
     </Head>
-    
     <LoginForm />
   </>
 );
