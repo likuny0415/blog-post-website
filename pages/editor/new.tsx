@@ -1,18 +1,11 @@
-import { copyFileSync } from "fs";
+import Router from "next/router";
 import React from "react";
 import useSWR from "swr";
+import ListErrors from "../../components/common/ListErrors";
 import ArticleAPI from "../../lib/api/article";
-import editorReducer from "../../lib/utils/editorReducer";
 import storage from "../../lib/utils/storage";
 
 const PublishArticleEditor = () => {
-  const initialState = {
-    authorId: "",
-    title: "",
-    description: "",
-    body: "",
-  };
-
   const [isLoading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -35,17 +28,28 @@ const PublishArticleEditor = () => {
     e.preventDefault();
     setLoading(true);
 
-    console.log(body);
-
     try {
-      setAuthorId(JSON.parse(localStorage.getItem("user")).id);
 
-      const { data } = await ArticleAPI.create(authorId, body, title, description);
+      const authorId = JSON.parse(localStorage.getItem("user")).id;
+      setAuthorId(authorId);
+
+      const { data } = await ArticleAPI.create(
+        authorId,
+        body,
+        title,
+        description
+      );
+
+      if (data.error) {
+        setErrors(data.error);
+      }
 
       setLoading(false);
+
+      Router.push("/");
       // const { data } = await
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -54,6 +58,7 @@ const PublishArticleEditor = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-10 offset-md-1 col-xs-12">
+            <ListErrors errors={errors} />
             <form>
               <fieldset>
                 <fieldset className="form-group">
