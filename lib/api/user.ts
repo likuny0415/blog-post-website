@@ -3,6 +3,24 @@ import axios from "axios";
 import { SERVER_BASE_URL } from "../utils/constant";
 
 const UserAPI = {
+  update: async (id, bio, password, image) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${SERVER_BASE_URL}/user/update`,
+        data: {
+          id,
+          bio,
+          password,
+          image,
+        },
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
+
   login: async (email, password) => {
     try {
       const response = await axios.post(
