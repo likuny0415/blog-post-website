@@ -8,13 +8,18 @@ const editorReducer = (state, action) => {
     case "SET_DESCRIPTION":
       return {
         ...state,
-        title: action.text,
+        description: action.text,
       };
     case "SET_BODY":
       return {
         ...state,
-        title: action.text,
+        body: action.text,
       };
+    case "SET_AUTHORID":
+      return {
+        ...state,
+        authorId: action.text,
+      }
     default:
       throw new Error("Unhandled action");
   }

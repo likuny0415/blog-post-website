@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(123)
     try {
       
       const { data } = await UserAPI.login(email, password);
