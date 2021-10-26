@@ -3,6 +3,20 @@ import axios from "axios";
 import { SERVER_BASE_URL } from "../utils/constant";
 
 const UserAPI = {
+  findById: async (id) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${SERVER_BASE_URL}/user/findById`,
+        data: {
+          id
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error.response;
+    }
+  },
   update: async (id, bio, password, image) => {
     try {
       const response = await axios({
@@ -20,7 +34,6 @@ const UserAPI = {
       return error.response;
     }
   },
-
   login: async (email, password) => {
     try {
       const response = await axios.post(
