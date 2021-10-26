@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 import UserAPI from "../../lib/api/user";
 import Router from "next/router";
 import ListErrors from "../common/ListErrors";
+import { mutate } from "swr";
 
 const theme = createTheme();
 
@@ -49,6 +50,7 @@ const Register = () => {
 
       if (data?.user) {
         window.localStorage.setItem("user", JSON.stringify(data.user));
+        mutate("user", data?.user);
         Router.push("/");
       }
     } catch (error) {

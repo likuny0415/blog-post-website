@@ -1,6 +1,6 @@
 
 import React from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import Router from "next/router";
 import UserAPI from "../../lib/api/user";
 import checkLogin from "../../lib/utils/checkLogin";
@@ -53,6 +53,7 @@ const SettingsForm = () => {
 
       if (data?.user) {
         window.localStorage.setItem("user", JSON.stringify(data.user));
+        mutate("user", data.user);
         Router.push('/')
       }
     } catch (error) {
