@@ -39,7 +39,7 @@ const SettingsForm = () => {
     try {
       const authorId = JSON.parse(localStorage.getItem("user")).id;
       setLoading(false);
-      console.log(authorId);
+
       const { data } = await UserAPI.update(
         authorId,
         userInfo.bio,

@@ -1,4 +1,4 @@
-export const SERVER_BASE_URL = "https://kuny-blog.herokuapp.com/"
+export const SERVER_BASE_URL = "https://kuny-blog.herokuapp.com"
 
 export const APP_NAME = "Thought"
 
