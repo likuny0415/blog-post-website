@@ -20,6 +20,20 @@ const ArticleAPI = {
       return error.response;
     }
   },
+  find: async (id) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${SERVER_BASE_URL}/article/find`,
+        data: {
+          id,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
 
 export default ArticleAPI;

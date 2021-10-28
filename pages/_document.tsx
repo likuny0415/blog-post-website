@@ -23,10 +23,10 @@ class MyDocument extends Document<IProps> {
       <Html>
         <Head>
           <link rel="stylesheet" href="//demo.productionready.io/main.css" />
-          {/* <link
+          <link
             rel="stylesheet"
             href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-          /> */}
+          />
           <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
