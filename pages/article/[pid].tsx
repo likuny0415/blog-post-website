@@ -18,7 +18,6 @@ const ArticlePage = ({ initialArticle }) => {
 
 ArticlePage.getInitialProps = async ({ query: { pid } }) => {
   const initialArticle = await ArticleAPI.find(pid);
-  console.log(initialArticle)
   return { initialArticle };
 };
 
