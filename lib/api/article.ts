@@ -34,6 +34,8 @@ const ArticleAPI = {
       return error.response;
     }
   },
+  get: (slug) =>
+    axios.get(`${SERVER_BASE_URL}/article/${encodeURIComponent(slug)}`).then(res => res.data),
 };
 
 export default ArticleAPI;

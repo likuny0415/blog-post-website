@@ -46,21 +46,22 @@ interface ArticlePageProps {
   pid: string;
 }
 
-const ArticlePage = ({ article, pid }: ArticlePageProps) => {
+const ArticlePage = ({ initialArticle }) => {
 
-  // const { title, body, createAt, author } = initialArticle;
+  // const { title, body, createAt, author } = initialArticle.article;
   // const article = {
   //   title,
   //   body,
   //   createAt,
   //   author,
   // };
+
   return (
     <ArticlePageContainer>
       <ArticleInfoContainer>
         <ArticleInfoPresenter>
           <ArticleTitle>
-            {article.title}
+            <h1>{initialArticle.article.title}</h1>
           </ArticleTitle>
         </ArticleInfoPresenter>
       </ArticleInfoContainer>
@@ -80,33 +81,9 @@ const ArticlePage = ({ article, pid }: ArticlePageProps) => {
 };
 
 
-export async function getStaticPaths() {
-  return { paths: [], fallback: true };
-}
-
-export async function getStaticProps({ params }) {
-  const { pid } = params;
-
-  try {
-    const data = await ArticleAPI.find(pid);
-    console.log(data)
-    return {
-      props: {
-        article: data?.article,
-        pid,
-      },
-      revalidate: 1,
-    };
-  } catch (error) {
-    console.error(`Get Article id ${pid} error: `, error);
-    return {
-      props: {
-        article: {},
-        pid,
-      },
-      revalidate: 1,
-    };
-  }
-}
+ArticlePage.getInitialProps = async ({ query: { pid } }) => {
+  const initialArticle = await ArticleAPI.get(pid);
+  return { initialArticle };
+};
 
 export default ArticlePage;
