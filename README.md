@@ -39,6 +39,14 @@ How to create and article list?
 - 1 page for 5 articles in the DB
 - when you click each page, it will -> article/10
 - first i need to know, what is offset and how to split the pages
+- first you need to pass pageSize, pageNumber into db
+
+
+Before push
+- Every time before push data back to vercel, remember to change url back to heroku address
+
+How to align articles in the center
+- Css stuff
 
 
 
