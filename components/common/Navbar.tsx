@@ -107,8 +107,8 @@ const Navbar = () => {
             </NavbarItem>
             <NavbarItem>
               <NavLink
-                href={`/profile/${currentUser?.username}`}
-                as={`/profile/${currentUser?.username}`}
+                href={`/profile/${currentUser?.id}`}
+                as={`/profile/${currentUser?.id}`}
                 onClick={handleClick}
               >
                 {currentUser?.username}
