@@ -5,7 +5,7 @@ const ArticleList = ({ articles }) => {
   return (
     <>
       {articles.rows?.map((article) => {
-        return <ArticlePreview article={article} />;
+        return <ArticlePreview key={article} article={article} />;
       })}
     </>
   );
