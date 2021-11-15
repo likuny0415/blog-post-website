@@ -60,8 +60,9 @@ const ArticleMeta = ({ article }) => {
         >
           {article.author?.username}
         </ArticleAuthorLink>
+        <ArticleDate>{article.createAt}</ArticleDate>
       </ArticleInfo>
-      <ArticleDate>{article.createAt}</ArticleDate>
+      
       <ArticleActions article={article} />
     </ArticleMetaContainer>
   );

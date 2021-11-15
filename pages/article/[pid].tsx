@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { marked } from 'marked'
 import React from "react";
 import ArticleMeta from "../../components/article/ArticleMeta";
+import moment from "moment";
 
 
 const ArticlePageContainer = styled("div")``;
@@ -153,7 +154,7 @@ const ArticlePage = ({ initialArticle }) => {
   const article = {
     title,
     body,
-    createAt,
+    createAt: moment(createAt).format('YYYY-MM-DD HH:mm'),
     author,
   };
 
@@ -165,10 +166,8 @@ const ArticlePage = ({ initialArticle }) => {
     <ArticlePageContainer>
       <ArticleInfoContainer>
         <ArticleInfoPresenter>
-          <ArticleTitle>
-            <h1>{title}</h1>
-            <ArticleMeta article={article} />
-          </ArticleTitle>
+            <ArticleTitle>{article.title}</ArticleTitle>
+            <ArticleMeta article={article} />          
         </ArticleInfoPresenter>
       </ArticleInfoContainer>
 
