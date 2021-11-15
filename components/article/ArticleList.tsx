@@ -1,6 +1,14 @@
+import React from "react";
+import ArticlePreview from "./ArticlePreview";
 
-const ArticleList = () => {
-    return <h1>1231231</h1>
-}
+const ArticleList = ({ articles }) => {
+  return (
+    <>
+      {articles.rows?.map((article) => {
+        return <ArticlePreview article={article} />;
+      })}
+    </>
+  );
+};
 
 export default ArticleList;

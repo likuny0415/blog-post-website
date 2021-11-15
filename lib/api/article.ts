@@ -34,6 +34,22 @@ const ArticleAPI = {
       return error.response;
     }
   },
+  
+  findByAuthor: async (authorId) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${SERVER_BASE_URL}/article/findByAuthor`,
+        data: {
+          authorId,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error.response;
+    }
+  },
+
   get: (slug) =>
     axios.get(`${SERVER_BASE_URL}/article/${encodeURIComponent(slug)}`).then(res => res.data),
 };
