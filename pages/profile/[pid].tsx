@@ -1,6 +1,6 @@
 import React from "react";
 import UserAPI from "../../lib/api/user";
-import CustomImage from "../../components/common/CustomerImage";
+import CustomImage from "../../components/common/CustomImage";
 import Maybe from "../../components/common/Maybe";
 
 const Profile = ({ initialProfile }) => {
