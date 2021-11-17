@@ -85,7 +85,7 @@ const PublishArticleEditor = () => {
                   <textarea
                     className="form-control"
                     rows={8}
-                    placeholder="Write your article (in markdown)"
+                    placeholder="Write your article (support markdown)"
                     value={body}
                     onChange={handleBody}
                   />

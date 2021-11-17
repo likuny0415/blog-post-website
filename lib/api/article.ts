@@ -35,13 +35,15 @@ const ArticleAPI = {
     }
   },
   
-  findByAuthor: async (authorId) => {
+  findByAuthor: async (authorId, pageNo = 1, pageSize = 5) => {
     try {
       const response = await axios({
         method: "post",
         url: `${SERVER_BASE_URL}/article/findByAuthor`,
         data: {
           authorId,
+          pageSize,
+          pageNo
         },
       });
       return response.data;

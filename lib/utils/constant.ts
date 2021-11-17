@@ -1,8 +1,8 @@
 // master
-export const SERVER_BASE_URL = "https://kuny-blog.herokuapp.com"
+// export const SERVER_BASE_URL = "https://kuny-blog.herokuapp.com"
 
 // dev
-// export const SERVER_BASE_URL = "http://localhost:4000"
+export const SERVER_BASE_URL = "http://localhost:4000"
 
 export const APP_NAME = "Thought"
 
