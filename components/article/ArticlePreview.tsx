@@ -12,7 +12,7 @@ const ArticlePreview = ({ article }) => {
     <div className="article-preview" style={{ padding: "1.5rem 0.5rem" }}>
       <div className="article-meta">
         <CustomLink href="/profile/[pid]" as={`/profile/${article.authorId}`}>
-          <CustomImage src={article.authorId} alt="author's profile image" />
+          <CustomImage src={article.image} alt="author's profile image" />
         </CustomLink>
 
         <div className="info">

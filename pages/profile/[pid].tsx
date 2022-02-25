@@ -83,6 +83,7 @@ const Profile = ({ initialProfile, pid }) => {
 Profile.getInitialProps = async ({ query: { pid } }) => {
   const initialProfile = await UserAPI.findById(pid);
   // const articles = await ArticleAPI.findByAuthor(pid);
+  console.log(initialProfile);
   return { initialProfile, pid };
 };
 
