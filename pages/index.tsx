@@ -2,6 +2,10 @@ import Head from "next/head";
 import React from "react";
 import styled from "@emotion/styled";
 import Banner from "../components/home/Banner";
+import UserAPI from "../lib/api/user";
+import ArticleAPI from "../lib/api/article";
+import ArticlePreview from "../components/article/ArticlePreview";
+import ArticlePagination from "../components/article/ArticlePagination";
 
 
 const MainContent = styled("div")`
@@ -27,6 +31,24 @@ const ContentContainer = styled("div")`
 
 
 const Home = () => {
+  const [articles, setArticles] = React.useState([]);
+  const [page, setPage] = React.useState(1);
+  const [numberPages, setNumberPages] = React.useState(10);
+
+  const fetchArticles = async () => {
+    try {
+      const result = await ArticleAPI.findAll(page);
+      setArticles(result?.rows);
+      setNumberPages(result?.numberPages);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchArticles();
+  }, [page]);
+
   return (
     <>
       <Head>
@@ -36,12 +58,30 @@ const Home = () => {
       </Head>
    <Banner />
    <MainContent>
-     <ContentContainer>
-       
-     </ContentContainer>
+       <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-md-10 offset-md-1">
+            <div>
+              <div>
+                {articles?.map((article) => {
+                  return <ArticlePreview key={article} article={article} />;
+                })}
+              </div>
+              <ArticlePagination pageNumber={numberPages} setPage={setPage}/>
+            </div>
+          </div>
+        </div>
+      </div>
    </MainContent>
     </>
   );
 };
+
+// Home.getInitialProps = async ({ query: { pid } }) => {
+//   const initialArticles = await ArticleAPI.findAll();
+  
+//   console.log(initialArticles)
+//   return { initialArticles, pid };
+// };
 
 export default Home;

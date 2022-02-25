@@ -7,6 +7,7 @@ import ArticleAPI from "../../lib/api/article";
 import ArticlePreview from "../../components/article/ArticlePreview";
 import { Pagination } from "@material-ui/core";
 import ArticlePagination from "../../components/article/ArticlePagination";
+import Head from "next/head";
 
 const Profile = ({ initialProfile, pid }) => {
   const [articles, setArticles] = React.useState([]);
@@ -32,6 +33,11 @@ const Profile = ({ initialProfile, pid }) => {
   }, [page]);
 
   return (
+    <>
+     <Head>
+        <title>{username}</title>
+        <meta content="Post Page" key="title" />
+      </Head>
     <div className="profile-page">
       <div className="user-info">
         <div className="container">
@@ -48,7 +54,7 @@ const Profile = ({ initialProfile, pid }) => {
                 />
                 <h4>{username}</h4>
                 <p>{bio}</p>
-                <p>{email}</p>
+                {/* <p>{email}</p> */}
               </Maybe>
             </div>
           </div>
@@ -70,6 +76,7 @@ const Profile = ({ initialProfile, pid }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

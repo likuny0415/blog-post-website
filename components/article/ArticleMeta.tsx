@@ -63,7 +63,7 @@ const ArticleMeta = ({ article }) => {
         <ArticleDate>{article.createAt}</ArticleDate>
       </ArticleInfo>
       
-      <ArticleActions article={article} />
+      {/* <ArticleActions article={article} /> */}
     </ArticleMetaContainer>
   );
 };

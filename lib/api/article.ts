@@ -34,6 +34,21 @@ const ArticleAPI = {
       return error.response;
     }
   },
+  findAll: async (pageNo = 1, pageSize = 10) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${SERVER_BASE_URL}/article/findAll`,
+        data: {
+          pageSize,
+          pageNo
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error.response;
+    }
+  },
   
   findByAuthor: async (authorId, pageNo = 1, pageSize = 5) => {
     try {
